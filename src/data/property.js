@@ -129,7 +129,7 @@ export const rooms = [
   {
     id: 'master',
     name: 'Plan B — 3rd Floor Master Suite',
-    price: 1450,
+    price: 1400,
     utilities: 150,
     period: 'month',
     floor: '3rd Floor',
@@ -149,7 +149,7 @@ export const rooms = [
   {
     id: 'backyard',
     name: 'Plan A — 1st Floor Backyard Suite',
-    price: 1350,
+    price: 1275,
     utilities: 150,
     period: 'month',
     floor: '1st Floor',
@@ -170,7 +170,7 @@ export const rooms = [
   {
     id: 'private-bath',
     name: 'Plan C — 2nd Floor Private Bath Room',
-    price: 1275,
+    price: 1200,
     utilities: 150,
     period: 'month',
     floor: '2nd Floor',
