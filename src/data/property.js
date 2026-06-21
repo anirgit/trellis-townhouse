@@ -262,6 +262,6 @@ export const faqs = [
 // paste your endpoint here. Leave empty to use a mailto: fallback.
 export const contact = {
   email: 'infy.anirban@gmail.com',
-  formspreeEndpoint: '',
+  formspreeEndpoint: 'https://formspree.io/f/xlgyrnvd',
   responseTime: 'Most inquiries answered within 24 hours.',
 }
