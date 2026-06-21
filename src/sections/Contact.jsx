@@ -33,6 +33,7 @@ function validate({ name, email, message }) {
 }
 
 const availableRooms = rooms.filter((r) => r.status !== 'rented')
+const waitlistRooms = rooms.filter((r) => r.status === 'rented')
 
 export default function Contact() {
   const [form, setForm] = useState({
@@ -184,11 +185,24 @@ export default function Contact() {
                     className="rounded-xl border border-clay-200 bg-cream-50 px-4 py-3 text-sm text-ink-900 transition-colors focus:border-clay-500 focus:outline-none focus:ring-2 focus:ring-clay-300/40"
                   >
                     <option value="">No preference</option>
-                    {availableRooms.map((r) => (
-                      <option key={r.id} value={r.name}>
-                        {r.name} — ${r.price}/mo
-                      </option>
-                    ))}
+                    {availableRooms.length > 0 && (
+                      <optgroup label="Available now">
+                        {availableRooms.map((r) => (
+                          <option key={r.id} value={r.name}>
+                            {r.name} — ${r.price}/mo
+                          </option>
+                        ))}
+                      </optgroup>
+                    )}
+                    {waitlistRooms.length > 0 && (
+                      <optgroup label="Waitlist">
+                        {waitlistRooms.map((r) => (
+                          <option key={r.id} value={`Waitlist: ${r.name}`}>
+                            {r.name} (currently rented)
+                          </option>
+                        ))}
+                      </optgroup>
+                    )}
                   </select>
                 </div>
 

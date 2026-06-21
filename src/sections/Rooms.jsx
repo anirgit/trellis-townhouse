@@ -14,10 +14,11 @@ export default function Rooms() {
       <div className="container-narrow">
         <FadeIn>
           <span className="section-eyebrow">Find your room</span>
-          <h2 className="section-title">Available rooms</h2>
+          <h2 className="section-title">Rooms in the home</h2>
           <p className="section-lead">
-            Each room is fully furnished and move-in ready. Prices include all
-            utilities, Wi-Fi, and access to common areas.
+            Each room is move-in ready with its own private or attached bathroom.
+            Pricing includes all utilities, Ziply Fiber internet, and bi-weekly
+            cleaning of common areas.
           </p>
         </FadeIn>
 
@@ -27,9 +28,7 @@ export default function Rooms() {
             return (
               <FadeIn key={room.id} delay={i * 0.08}>
                 <article
-                  className={`group relative flex h-full flex-col overflow-hidden rounded-3xl bg-cream-50 shadow-soft transition-all duration-300 hover:-translate-y-1 hover:shadow-soft-lg ${
-                    isRented ? 'opacity-70' : ''
-                  }`}
+                  className="group relative flex h-full flex-col overflow-hidden rounded-3xl bg-cream-50 shadow-soft transition-all duration-300 hover:-translate-y-1 hover:shadow-soft-lg"
                 >
                   <div className="relative aspect-[4/3] overflow-hidden">
                     <img
@@ -66,18 +65,26 @@ export default function Rooms() {
                     </div>
 
                     <div className="mt-3">
-                      <div className="flex items-baseline gap-1">
-                        <span className="font-serif text-3xl font-semibold text-clay-700">
-                          ${room.price.toLocaleString()}
-                        </span>
-                        <span className="text-sm text-ink-700">/ {room.period}</span>
-                      </div>
-                      <p className="mt-1 text-xs text-ink-700/70">
-                        + ${room.utilities} utilities ={' '}
-                        <span className="font-medium text-ink-700">
-                          ${(room.price + room.utilities).toLocaleString()}/mo total
-                        </span>
-                      </p>
+                      {room.price != null ? (
+                        <>
+                          <div className="flex items-baseline gap-1">
+                            <span className="font-serif text-3xl font-semibold text-clay-700">
+                              ${room.price.toLocaleString()}
+                            </span>
+                            <span className="text-sm text-ink-700">/ {room.period}</span>
+                          </div>
+                          <p className="mt-1 text-xs text-ink-700/70">
+                            + ${room.utilities} utilities ={' '}
+                            <span className="font-medium text-ink-700">
+                              ${(room.price + room.utilities).toLocaleString()}/mo total
+                            </span>
+                          </p>
+                        </>
+                      ) : (
+                        <p className="font-serif text-lg text-ink-700/70">
+                          Pricing available when room reopens
+                        </p>
+                      )}
                     </div>
 
                     {room.description && (
@@ -97,17 +104,14 @@ export default function Rooms() {
 
                     <a
                       href="#contact"
-                      className={`mt-6 inline-flex items-center justify-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium transition-all ${
+                      className={`group/btn mt-6 inline-flex items-center justify-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium transition-all ${
                         isRented
-                          ? 'pointer-events-none bg-clay-100 text-ink-700'
-                          : 'bg-ink-900 text-cream-50 hover:bg-clay-700 group/btn'
+                          ? 'border-2 border-clay-600 text-clay-700 hover:bg-clay-600 hover:text-cream-50'
+                          : 'bg-ink-900 text-cream-50 hover:bg-clay-700'
                       }`}
-                      aria-disabled={isRented}
                     >
-                      {isRented ? 'Currently Unavailable' : 'Inquire About This Room'}
-                      {!isRented && (
-                        <ArrowRight className="h-4 w-4 transition-transform group-hover/btn:translate-x-0.5" />
-                      )}
+                      {isRented ? 'Join Waitlist' : 'Inquire About This Room'}
+                      <ArrowRight className="h-4 w-4 transition-transform group-hover/btn:translate-x-0.5" />
                     </a>
                   </div>
                 </article>
