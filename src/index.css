@@ -1,0 +1,76 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+  }
+
+  body {
+    @apply bg-cream-50 text-ink-900 font-sans antialiased;
+    font-feature-settings: 'ss01', 'cv11';
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-serif tracking-tight;
+  }
+
+  ::selection {
+    @apply bg-clay-300 text-ink-900;
+  }
+}
+
+@layer components {
+  .container-narrow {
+    @apply mx-auto max-w-6xl px-4 sm:px-6 lg:px-8;
+  }
+
+  .section-padding {
+    @apply py-20 sm:py-24 lg:py-32;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-clay-600 px-6 py-3
+           text-sm font-medium text-cream-50 shadow-soft transition-all
+           hover:bg-clay-700 hover:shadow-soft-lg hover:-translate-y-0.5
+           focus:outline-none focus:ring-2 focus:ring-clay-400 focus:ring-offset-2
+           focus:ring-offset-cream-50 active:translate-y-0;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border-2 border-clay-600
+           bg-transparent px-6 py-3 text-sm font-medium text-clay-700 transition-all
+           hover:bg-clay-600 hover:text-cream-50 hover:-translate-y-0.5
+           focus:outline-none focus:ring-2 focus:ring-clay-400 focus:ring-offset-2
+           focus:ring-offset-cream-50;
+  }
+
+  .section-eyebrow {
+    @apply inline-block text-xs font-medium uppercase tracking-[0.2em] text-clay-600;
+  }
+
+  .section-title {
+    @apply mt-3 font-serif text-4xl font-medium text-ink-900 sm:text-5xl lg:text-6xl;
+  }
+
+  .section-lead {
+    @apply mt-4 max-w-2xl text-base leading-relaxed text-ink-700 sm:text-lg;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  @apply bg-cream-100;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-clay-300 rounded-full;
+}
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-clay-400;
+}
