@@ -133,8 +133,8 @@ export const rooms = [
     utilities: 150,
     period: 'month',
     floor: '3rd Floor',
-    available: 'Available Now',
-    status: 'available', // 'available' | 'soon' | 'rented'
+    available: 'Currently Rented',
+    status: 'rented', // 'available' | 'soon' | 'rented'
     image: '/photos/master-bedroom.jpg',
     description:
       'Large room with attached private bathroom and walk-in closet.',
@@ -174,8 +174,8 @@ export const rooms = [
     utilities: 150,
     period: 'month',
     floor: '2nd Floor',
-    available: 'Available Now',
-    status: 'available',
+    available: 'Currently Rented',
+    status: 'rented',
     image: '/photos/room-2nd-floor.jpg',
     description:
       'Private room with private side bathroom near kitchen and living area.',
