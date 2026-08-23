@@ -13,12 +13,11 @@ export default function Rooms() {
     <section id="rooms" className="section-padding bg-cream-100">
       <div className="container-narrow">
         <FadeIn>
-          <span className="section-eyebrow">Find your room</span>
-          <h2 className="section-title">Rooms in the home</h2>
+          <span className="section-eyebrow">Lease details</span>
+          <h2 className="section-title">Entire home rental</h2>
           <p className="section-lead">
-            Each room is move-in ready with its own private or attached bathroom.
-            Pricing includes all utilities, Ziply Fiber internet, and bi-weekly
-            cleaning of common areas.
+            This listing is for the full townhouse lease. Review monthly rent,
+            availability, and core features below.
           </p>
         </FadeIn>
 
@@ -73,12 +72,18 @@ export default function Rooms() {
                             </span>
                             <span className="text-sm text-ink-700">/ {room.period}</span>
                           </div>
-                          <p className="mt-1 text-xs text-ink-700/70">
-                            + ${room.utilities} utilities ={' '}
-                            <span className="font-medium text-ink-700">
-                              ${(room.price + room.utilities).toLocaleString()}/mo total
-                            </span>
-                          </p>
+                          {typeof room.utilities === 'number' ? (
+                            <p className="mt-1 text-xs text-ink-700/70">
+                              + ${room.utilities} utilities ={' '}
+                              <span className="font-medium text-ink-700">
+                                ${(room.price + room.utilities).toLocaleString()}/mo total
+                              </span>
+                            </p>
+                          ) : room.utilitiesNote ? (
+                            <p className="mt-1 text-xs leading-relaxed text-ink-700/70">
+                              {room.utilitiesNote}
+                            </p>
+                          ) : null}
                         </>
                       ) : (
                         <p className="font-serif text-lg text-ink-700/70">
@@ -110,7 +115,7 @@ export default function Rooms() {
                           : 'bg-ink-900 text-cream-50 hover:bg-clay-700'
                       }`}
                     >
-                      {isRented ? 'Join Waitlist' : 'Inquire About This Room'}
+                      {isRented ? 'Join Waitlist' : 'Inquire About This Home'}
                       <ArrowRight className="h-4 w-4 transition-transform group-hover/btn:translate-x-0.5" />
                     </a>
                   </div>

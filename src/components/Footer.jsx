@@ -3,7 +3,7 @@ import { property, contact } from '../data/property'
 
 const FOOTER_LINKS = [
   { href: '#gallery', label: 'Gallery' },
-  { href: '#rooms', label: 'Rooms' },
+  { href: '#rooms', label: 'Lease Details' },
   { href: '#amenities', label: 'Amenities' },
   { href: '#about', label: 'About' },
   { href: '#location', label: 'Location' },

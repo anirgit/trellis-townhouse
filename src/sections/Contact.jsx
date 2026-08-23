@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Mail, Send, CheckCircle2, AlertCircle, Loader2 } from 'lucide-react'
-import { contact, rooms } from '../data/property'
+import { contact } from '../data/property'
 import FadeIn from '../components/FadeIn'
 
 // Simple, strict client-side validation. The form is also length-limited
@@ -32,14 +32,11 @@ function validate({ name, email, message }) {
   return errors
 }
 
-const availableRooms = rooms.filter((r) => r.status !== 'rented')
-const waitlistRooms = rooms.filter((r) => r.status === 'rented')
-
 export default function Contact() {
   const [form, setForm] = useState({
     name: '',
     email: '',
-    room: '',
+    leaseTerm: '',
     moveIn: '',
     message: '',
     // Honeypot field — bots fill it, humans don't see it.
@@ -75,14 +72,14 @@ export default function Contact() {
           body: JSON.stringify({
             name: form.name.trim(),
             email: form.email.trim(),
-            room: form.room || 'No preference',
+            leaseTerm: form.leaseTerm || 'Flexible',
             moveIn: form.moveIn || 'Flexible',
             message: form.message.trim(),
           }),
         })
         if (!res.ok) throw new Error(`Form submission failed: ${res.status}`)
         setStatus('success')
-        setForm({ name: '', email: '', room: '', moveIn: '', message: '', website: '' })
+        setForm({ name: '', email: '', leaseTerm: '', moveIn: '', message: '', website: '' })
       } catch {
         setStatus('error')
       }
@@ -93,7 +90,7 @@ export default function Contact() {
     const bodyLines = [
       `Name: ${form.name}`,
       `Email: ${form.email}`,
-      `Preferred room: ${form.room || 'No preference'}`,
+      `Preferred lease term: ${form.leaseTerm || 'Flexible'}`,
       `Move-in: ${form.moveIn || 'Flexible'}`,
       '',
       form.message,
@@ -115,8 +112,8 @@ export default function Contact() {
               Interested? Send a message.
             </h2>
             <p className="mt-4 max-w-md text-lg leading-relaxed text-cream-100/85">
-              Tell me a little about yourself and which room caught your eye, and
-              I&apos;ll get back to you to schedule a tour.
+              Tell me a bit about your household, ideal move-in date, and lease
+              timeline, and I&apos;ll get back to schedule a tour.
             </p>
 
             <div className="mt-8 space-y-3">
@@ -175,34 +172,19 @@ export default function Contact() {
                 />
 
                 <div className="flex flex-col gap-1.5">
-                  <label htmlFor="room" className="text-xs font-medium uppercase tracking-wider text-ink-700">
-                    Preferred room
+                  <label htmlFor="leaseTerm" className="text-xs font-medium uppercase tracking-wider text-ink-700">
+                    Preferred lease term
                   </label>
                   <select
-                    id="room"
-                    value={form.room}
-                    onChange={update('room')}
+                    id="leaseTerm"
+                    value={form.leaseTerm}
+                    onChange={update('leaseTerm')}
                     className="rounded-xl border border-clay-200 bg-cream-50 px-4 py-3 text-sm text-ink-900 transition-colors focus:border-clay-500 focus:outline-none focus:ring-2 focus:ring-clay-300/40"
                   >
-                    <option value="">No preference</option>
-                    {availableRooms.length > 0 && (
-                      <optgroup label="Available now">
-                        {availableRooms.map((r) => (
-                          <option key={r.id} value={r.name}>
-                            {r.name} — ${r.price}/mo
-                          </option>
-                        ))}
-                      </optgroup>
-                    )}
-                    {waitlistRooms.length > 0 && (
-                      <optgroup label="Waitlist">
-                        {waitlistRooms.map((r) => (
-                          <option key={r.id} value={`Waitlist: ${r.name}`}>
-                            {r.name} (currently rented)
-                          </option>
-                        ))}
-                      </optgroup>
-                    )}
+                    <option value="">Flexible / not sure yet</option>
+                    <option value="6 months">6 months</option>
+                    <option value="12 months">12 months</option>
+                    <option value="12+ months">12+ months</option>
                   </select>
                 </div>
 

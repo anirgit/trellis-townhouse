@@ -1,15 +1,15 @@
 // =============================================================================
 // PROPERTY DATA — 16723 Alderwood Mall Pkwy #C6, Lynnwood, WA 98037
 // =============================================================================
-// All copy, pricing, room details, photos, FAQs, and contact info live here.
+// All copy, pricing, layout details, photos, FAQs, and contact info live here.
 // Update these values and the entire site updates automatically.
 
 export const property = {
   name: 'Trellis Townhouse · Unit C6',
   tagline:
-    'Private bedroom suites in a brand-new 2025 townhouse — just steps from Alderwood Mall in Lynnwood, WA.',
+    'Brand-new 4 bed / 4 bath townhouse for rent in Lynnwood — whole home lease, no housemates.',
   shortDescription:
-    'A brand-new, never-lived-in 2025 townhouse in the Trellis community by D.R. Horton. Three private bedroom suites available with shared modern kitchen, living, and dining areas. All utilities, high-speed internet, and bi-weekly cleaning of common areas included.',
+    'A newly built 2025 D.R. Horton townhouse in the Trellis community. Entire 3-level home rental with 4 bedrooms, 4 bathrooms, 1,965 sq ft, attached garage parking, in-unit laundry, fenced yard, and quick access to Alderwood Mall, transit, and major highways.',
   address: {
     line1: '16723 Alderwood Mall Pkwy, Unit C6',
     city: 'Lynnwood',
@@ -22,17 +22,17 @@ export const property = {
     bathrooms: 4,
     sqft: 1965,
     yearBuilt: 2025,
-    garage: '1-car attached',
+    garage: 'Attached garage parking',
   },
   highlights: [
+    'Whole home rental (single-family style)',
     'Brand new 2025 build',
-    'All utilities included',
-    'High-speed Ziply Fiber',
-    'Bi-weekly cleaning',
-    'Smart home access',
-    'Home security system',
-    'Fenced backyard & deck',
-    'Steps from Alderwood Mall',
+    '4 bed / 4 bath / 1,965 sq ft',
+    'Chef kitchen with peninsula',
+    'Deck + fenced yard',
+    'Attached garage parking',
+    'In-unit laundry',
+    'Close to Alderwood Mall & Light Rail',
   ],
 }
 
@@ -122,88 +122,30 @@ export const galleryImages = [
 ]
 
 // -----------------------------------------------------------------------------
-// ROOMS — Each room shown as a card in the Rooms section.
-// Pricing: base rent + $150 utilities/services fee = total monthly payment.
+// LEASE DETAILS — Displayed in the "Lease Details" section.
 // -----------------------------------------------------------------------------
 export const rooms = [
   {
-    id: 'master',
-    name: 'Plan B — 3rd Floor Master Suite',
-    price: 1400,
-    utilities: 150,
-    period: 'month',
-    floor: '3rd Floor',
-    available: 'Currently Rented',
-    status: 'rented', // 'available' | 'soon' | 'rented'
-    image: '/photos/master-bedroom.jpg',
-    description:
-      'Large room with attached private bathroom and walk-in closet.',
-    features: [
-      'Attached private bathroom with glass shower',
-      'Double vanity & quartz counters',
-      'Walk-in closet',
-      'Top-floor privacy & natural light',
-      'Mini-split AC for personal climate control',
-    ],
-  },
-  {
-    id: 'backyard',
-    name: 'Plan A — 1st Floor Backyard Suite',
-    price: 1275,
-    utilities: 150,
-    period: 'month',
-    floor: '1st Floor',
-    available: 'Available Now',
-    status: 'available',
-    image: '/photos/room-backyard.jpg',
-    description:
-      'Large room with attached private bathroom and private backyard access. No built-in closet.',
-    features: [
-      'Attached private bathroom with glass shower',
-      'Direct private access to fenced backyard',
-      'Spacious — among the largest rooms',
-      'Ground-floor convenience, separated from common areas',
-      'Mini-split AC for personal climate control',
-      'Note: no built-in closet (room for a wardrobe)',
-    ],
-  },
-  {
-    id: 'private-bath',
-    name: 'Plan C — 2nd Floor Private Bath Room',
-    price: 1200,
-    utilities: 150,
-    period: 'month',
-    floor: '2nd Floor',
-    available: 'Currently Rented',
-    status: 'rented',
-    image: '/photos/room-2nd-floor.jpg',
-    description:
-      'Private room with private side bathroom near kitchen and living area.',
-    features: [
-      'Private side bathroom (just outside the room)',
-      'Closest to the kitchen & living area',
-      'Bright with large window',
-      'Best value of the three rooms',
-      'Mini-split AC for personal climate control',
-    ],
-  },
-  {
-    id: 'rented-3rd-secondary',
-    name: '3rd Floor Bedroom with Private Bath',
-    price: null,
+    id: 'entire-home',
+    name: 'Entire Townhome Rental',
+    price: 3595,
     utilities: null,
+    utilitiesNote:
+      'Utilities & services are tenant-paid (electricity, water, sewer/garbage, internet, and bi-weekly cleaning).',
     period: 'month',
-    floor: '3rd Floor',
-    available: 'Currently Rented',
-    status: 'rented',
-    image: '/photos/room-3rd-floor-secondary.jpg',
+    floor: '3 levels',
+    available: 'Available Sep 19, 2026',
+    status: 'available',
+    image: '/photos/exterior.jpg',
     description:
-      'Cozy 3rd-floor bedroom with attached private bathroom — currently occupied. Join the waitlist below to be notified when it becomes available.',
+      'Whole-home lease for a spacious and modern townhome in the Trellis community. Bright interiors, high ceilings, oversized garage, and easy commuter access.',
     features: [
-      'Attached private bathroom (tub + shower combo)',
-      'Quiet top-floor location, next to master suite',
-      'Bright window, peaceful neighborhood views',
-      'Mini-split AC for personal climate control',
+      '4 bedrooms, 4 bathrooms, 1,965 sq ft',
+      'Attached garage parking',
+      'In-unit washer & dryer',
+      'Chef kitchen with peninsula seating',
+      'Deck + fenced yard',
+      'Soaring ceilings and extra-large windows',
     ],
   },
 ]
@@ -213,28 +155,28 @@ export const rooms = [
 // Icon names must match keys in Amenities.jsx ICON_MAP.
 // -----------------------------------------------------------------------------
 export const amenities = [
-  { icon: 'Wifi', label: 'High-Speed Ziply Fiber', detail: 'Gigabit internet, included' },
-  { icon: 'Sofa', label: 'Modern Shared Living', detail: 'High ceilings, large windows' },
+  { icon: 'Wifi', label: 'High-Speed Internet Ready', detail: 'Ziply Fiber available' },
+  { icon: 'Sofa', label: 'Spacious Living Area', detail: 'High ceilings, large windows' },
   { icon: 'ChefHat', label: 'Chef’s Kitchen', detail: 'Quartz counters, stainless appliances' },
   { icon: 'WashingMachine', label: 'In-Unit Laundry', detail: 'Washer & dryer included' },
-  { icon: 'Car', label: 'Garage & Driveway Parking', detail: 'Limited — by separate agreement' },
+  { icon: 'Car', label: 'Attached Garage Parking', detail: 'Garage + off-street parking' },
   { icon: 'Trees', label: 'Private Fenced Backyard', detail: 'Plus upper-level deck' },
-  { icon: 'ShieldCheck', label: 'Home Security System', detail: 'Smart locks & monitoring' },
-  { icon: 'Sparkles', label: 'Bi-Weekly Cleaning', detail: 'Professional service, common areas' },
-  { icon: 'Zap', label: 'All Utilities Included', detail: 'Electric, water, sewer, garbage' },
+  { icon: 'ShieldCheck', label: 'Smart Home + Security', detail: 'Landlord-managed systems' },
+  { icon: 'Sparkles', label: 'Professional Cleaning Option', detail: 'Can be bundled in utilities/services fee' },
+  { icon: 'Zap', label: 'Modern Systems', detail: 'Heat pump + wall unit A/C' },
 ]
 
 // -----------------------------------------------------------------------------
 // ABOUT — Tell renters about the home.
 // -----------------------------------------------------------------------------
 export const about = {
-  heading: 'Brand-new construction. Designed for comfortable, modern co-living.',
+  heading: 'Brand-new construction, ready for full-home living.',
   paragraphs: [
-    'Trellis is a 2025 D.R. Horton townhouse community in the heart of Lynnwood — minutes from Alderwood Mall, top dining, and the new Lynnwood City Center Link light rail station. Our unit, C6, spans 1,965 sq ft across three levels, with four bedrooms and four bathrooms.',
-    'Each bedroom is offered as a private suite with its own dedicated bathroom — either attached or just outside the door. Shared areas include the open-concept chef\'s kitchen with quartz counters and stainless appliances, dining room, bright living room, fenced backyard, and upper-level deck. Every room has its own mini-split AC for personal climate control.',
-    'The home is fully equipped with a smart home system, security monitoring, and high-speed Ziply Fiber internet. This is a quiet, respectful household of working professionals who appreciate brand-new construction and a clean, well-maintained living space — bi-weekly professional cleaning of shared areas is included.',
+    'Trellis is a new 2025 D.R. Horton townhouse community in the heart of Lynnwood. Unit C6 offers 1,965 sq ft across three levels with 4 bedrooms and 4 bathrooms — leased as one complete home.',
+    'You get an open-concept main living floor with a chef-style peninsula kitchen, stainless appliances, dining/living flow, and abundant natural light. The home also includes a deck, fenced yard, and an oversized attached garage.',
+    'Commuter access is excellent: close to Alderwood Mall, Costco, major highways, and Lynnwood City Center Link light rail. Ideal for households looking for a newer, low-maintenance home in a highly connected location.',
   ],
-  hostName: 'Property Manager',
+  hostName: 'Listing Manager',
   hostImage: '/photos/exterior.jpg',
 }
 
@@ -244,43 +186,43 @@ export const about = {
 export const faqs = [
   {
     q: 'What is the minimum lease term?',
-    a: 'Initial 6-month lease preferred, renewable upon mutual written agreement.',
+    a: 'Lease terms are flexible from 6 to 12 months, with 12 months preferred.',
   },
   {
     q: 'What are the move-in costs?',
-    a: 'First month’s rent + the $150 utilities/services fee + security deposit (one month’s base rent for your selected room) + a $150 non-refundable cleaning fee.',
+    a: 'First month’s rent + security deposit (one month’s rent) + application fee (around $45 via Zillow).',
   },
   {
-    q: 'What does the $150 utilities & services fee cover?',
-    a: 'Electricity, water, sewer, garbage, high-speed Ziply internet, bi-weekly professional cleaning of shared areas, smart home access, and home security system. No surprise utility bills.',
+    q: 'Are utilities included in rent?',
+    a: 'Utilities/services are tenant-paid. This typically includes electricity, water, sewer/garbage, internet, and optional recurring cleaning services.',
   },
   {
-    q: 'Is renter’s insurance required?',
-    a: 'Yes — renter’s insurance is required for all tenants. Affordable policies typically run $10–$20/month.',
+    q: 'Is this a room share or entire home lease?',
+    a: 'This listing is for the entire townhouse as a single-family style lease (not a per-room rental).',
   },
   {
     q: 'Are pets allowed?',
-    a: 'No — pets are not allowed in this household.',
+    a: 'No. Pets are not allowed.',
   },
   {
-    q: 'What about smoking, vaping, and parties?',
-    a: 'Smoking and vaping are not permitted anywhere on the property. Parties are not allowed. Quiet, respectful guests are welcome.',
+    q: 'What are the house rules?',
+    a: 'No smoking/vaping and no parties.',
   },
   {
-    q: 'Can I have overnight guests?',
-    a: 'Yes — overnight guests are allowed for up to 1 week every 6 months with prior approval.',
+    q: 'Is the home furnished?',
+    a: 'The home is offered unfurnished.',
   },
   {
     q: 'How does parking work?',
-    a: 'Parking is limited. One garage spot and one driveway spot may be available by separate agreement — please discuss before move-in. Guest parking is first-come, first-served and not guaranteed. Note: no overnight parking near the mailbox.',
+    a: 'Attached garage parking is available. Ask for current parking details and any community parking restrictions.',
   },
   {
-    q: 'Is the room single or double occupancy?',
-    a: 'Single occupancy only. Each bedroom is a private suite for one person.',
+    q: 'What is the earliest move-in date?',
+    a: 'Current availability is listed as Sep 19, 2026.',
   },
   {
     q: 'How do I apply or tour the home?',
-    a: 'Send a message via the contact form below with your preferred room, ideal move-in date, and a bit about yourself. I’ll get back within 24 hours to schedule a tour and walk through the short application.',
+    a: 'Send a message through the contact form with your move-in timeline and lease term preference. Tours and application details are coordinated directly.',
   },
 ]
 

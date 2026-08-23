@@ -5,7 +5,7 @@ import { property } from '../data/property'
 
 const NAV_LINKS = [
   { href: '#gallery', label: 'Gallery' },
-  { href: '#rooms', label: 'Rooms' },
+  { href: '#rooms', label: 'Lease Details' },
   { href: '#amenities', label: 'Amenities' },
   { href: '#about', label: 'About' },
   { href: '#location', label: 'Location' },
