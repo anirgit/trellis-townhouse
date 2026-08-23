@@ -7,9 +7,9 @@
 export const property = {
   name: 'Trellis Townhouse · Unit C6',
   tagline:
-    'Brand-new 4 bed / 4 bath townhouse for rent in Lynnwood — whole home lease, no housemates.',
+    'Brand-new 3 bed / 4 bath townhouse for rent in Lynnwood — whole home lease, no housemates.',
   shortDescription:
-    'A newly built 2025 D.R. Horton townhouse in the Trellis community. Entire 3-level home rental with 4 bedrooms, 4 bathrooms, 1,965 sq ft, attached garage parking, in-unit laundry, fenced yard, and quick access to Alderwood Mall, transit, and major highways.',
+    'A newly built 2025 D.R. Horton townhouse in the Trellis community. Entire 3-level home rental with 3 bedrooms, 4 bathrooms, 1,965 sq ft, attached garage parking, in-unit laundry, fenced yard, and quick access to Alderwood Mall, transit, and major highways.',
   address: {
     line1: '16723 Alderwood Mall Pkwy, Unit C6',
     city: 'Lynnwood',
@@ -18,7 +18,7 @@ export const property = {
     mapsEmbedQuery: '16723 Alderwood Mall Pkwy C6, Lynnwood, WA 98037',
   },
   stats: {
-    bedrooms: 4,
+    bedrooms: 3,
     bathrooms: 4,
     sqft: 1965,
     yearBuilt: 2025,
@@ -27,7 +27,8 @@ export const property = {
   highlights: [
     'Whole home rental (single-family style)',
     'Brand new 2025 build',
-    '4 bed / 4 bath / 1,965 sq ft',
+    '3 bed / 4 bath / 1,965 sq ft',
+    'Garage-level flex room with attached bath',
     'Chef kitchen with peninsula',
     'Deck + fenced yard',
     'Attached garage parking',
@@ -140,11 +141,13 @@ export const rooms = [
     description:
       'Whole-home lease for a spacious and modern townhome in the Trellis community. Bright interiors, high ceilings, oversized garage, and easy commuter access.',
     features: [
-      '4 bedrooms, 4 bathrooms, 1,965 sq ft',
+      '3 bedrooms, 4 bathrooms, 1,965 sq ft',
+      'Garage-level room with attached bath, ideal as guest suite / office / flex room',
       'Attached garage parking',
       'In-unit washer & dryer',
       'Chef kitchen with peninsula seating',
       'Deck + fenced yard',
+      'Additional refrigerator + sofa available in living room',
       'Soaring ceilings and extra-large windows',
     ],
   },
@@ -156,9 +159,10 @@ export const rooms = [
 // -----------------------------------------------------------------------------
 export const amenities = [
   { icon: 'Wifi', label: 'High-Speed Internet Ready', detail: 'Ziply Fiber available' },
-  { icon: 'Sofa', label: 'Spacious Living Area', detail: 'High ceilings, large windows' },
+  { icon: 'Sofa', label: 'Spacious Living Area', detail: 'High ceilings, large windows, sofa included' },
   { icon: 'ChefHat', label: 'Chef’s Kitchen', detail: 'Quartz counters, stainless appliances' },
   { icon: 'WashingMachine', label: 'In-Unit Laundry', detail: 'Washer & dryer included' },
+  { icon: 'Thermometer', label: 'Additional Refrigerator', detail: 'Extra refrigerator included in living area' },
   { icon: 'Car', label: 'Attached Garage Parking', detail: 'Garage + off-street parking' },
   { icon: 'Trees', label: 'Private Fenced Backyard', detail: 'Plus upper-level deck' },
   { icon: 'ShieldCheck', label: 'Smart Home + Security', detail: 'Landlord-managed systems' },
@@ -172,8 +176,9 @@ export const amenities = [
 export const about = {
   heading: 'Brand-new construction, ready for full-home living.',
   paragraphs: [
-    'Trellis is a new 2025 D.R. Horton townhouse community in the heart of Lynnwood. Unit C6 offers 1,965 sq ft across three levels with 4 bedrooms and 4 bathrooms — leased as one complete home.',
-    'You get an open-concept main living floor with a chef-style peninsula kitchen, stainless appliances, dining/living flow, and abundant natural light. The home also includes a deck, fenced yard, and an oversized attached garage.',
+    'Trellis is a new 2025 D.R. Horton townhouse community in the heart of Lynnwood. Unit C6 offers 1,965 sq ft across three levels with 3 bedrooms and 4 bathrooms — leased as one complete home.',
+    'You get an open-concept main living floor with a chef-style peninsula kitchen, stainless appliances, dining/living flow, and abundant natural light. A garage-level room with an attached bath can be used as a guest suite, office, or flexible bonus space.',
+    'The home also includes a deck, fenced yard, oversized attached garage, and an additional refrigerator plus sofa in the living room.',
     'Commuter access is excellent: close to Alderwood Mall, Costco, major highways, and Lynnwood City Center Link light rail. Ideal for households looking for a newer, low-maintenance home in a highly connected location.',
   ],
   hostName: 'Listing Manager',
@@ -190,7 +195,7 @@ export const faqs = [
   },
   {
     q: 'What are the move-in costs?',
-    a: 'First month’s rent + security deposit (one month’s rent) + application fee (around $45 via Zillow).',
+    a: 'First month’s rent + security deposit (one month’s rent) + application fee (around $45 via Zillow) + a non-refundable one-time move-out cleaning fee of $375.',
   },
   {
     q: 'Are utilities included in rent?',
