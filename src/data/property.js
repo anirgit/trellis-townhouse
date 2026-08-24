@@ -44,8 +44,8 @@ export const lease = {
   rent: 3695,
   period: 'month',
   rentNote: 'Includes landlord-arranged bi-weekly professional cleaning',
-  available: 'Available now (confirm exact date)',
-  leaseTerm: 'Initial 6-month fixed term preferred',
+  available: 'Available from Sep 19th',
+  leaseTerm: 'Lease terms are flexible from 6 to 12 months',
   securityDeposit: 3695,
   moveOutCleaningFee: 375,
   utilitiesSummary: 'Tenant pays utilities. Owner includes landlord-arranged bi-weekly cleaning.',
@@ -220,7 +220,7 @@ export const about = {
 export const faqs = [
   {
     q: 'What is the minimum lease term?',
-    a: 'Lease terms are flexible from 6 to 12 months, with 12 months preferred.',
+    a: 'Lease terms are flexible from 6 to 12 months.',
   },
   {
     q: 'What are the move-in costs?',
