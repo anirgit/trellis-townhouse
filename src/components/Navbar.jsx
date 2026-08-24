@@ -72,7 +72,7 @@ export default function Navbar() {
 
           <div className="hidden lg:block">
             <a href="#contact" className="btn-primary py-2.5 text-sm">
-              Inquire
+              Request Showing / Pre-Qualify
             </a>
           </div>
 
@@ -143,7 +143,7 @@ export default function Navbar() {
                   onClick={() => setMobileOpen(false)}
                   className="btn-primary w-full"
                 >
-                  Inquire
+                  Request Showing / Pre-Qualify
                 </a>
               </div>
             </motion.div>

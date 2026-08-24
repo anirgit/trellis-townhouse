@@ -1,5 +1,5 @@
 import { Check, ArrowRight, Building2 } from 'lucide-react'
-import { rooms } from '../data/property'
+import { rooms, lease } from '../data/property'
 import FadeIn from '../components/FadeIn'
 
 const STATUS_STYLES = {
@@ -115,7 +115,7 @@ export default function Rooms() {
                           : 'bg-ink-900 text-cream-50 hover:bg-clay-700'
                       }`}
                     >
-                      {isRented ? 'Join Waitlist' : 'Inquire About This Home'}
+                      {isRented ? 'Join Waitlist' : 'Request Showing / Pre-Qualify'}
                       <ArrowRight className="h-4 w-4 transition-transform group-hover/btn:translate-x-0.5" />
                     </a>
                   </div>
@@ -123,6 +123,35 @@ export default function Rooms() {
               </FadeIn>
             )
           })}
+        </div>
+
+        <div className="mt-10 grid grid-cols-1 gap-6 lg:grid-cols-2">
+          <FadeIn>
+            <div className="rounded-3xl bg-cream-50 p-6 shadow-soft">
+              <h3 className="font-serif text-2xl text-ink-900">Tenant pays</h3>
+              <ul className="mt-4 space-y-2 text-sm text-ink-700">
+                {lease.tenantPays.map((item) => (
+                  <li key={item} className="flex items-start gap-2">
+                    <Check className="mt-0.5 h-4 w-4 flex-shrink-0 text-sage-600" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </FadeIn>
+          <FadeIn delay={0.08}>
+            <div className="rounded-3xl bg-cream-50 p-6 shadow-soft">
+              <h3 className="font-serif text-2xl text-ink-900">Owner pays</h3>
+              <ul className="mt-4 space-y-2 text-sm text-ink-700">
+                {lease.ownerPays.map((item) => (
+                  <li key={item} className="flex items-start gap-2">
+                    <Check className="mt-0.5 h-4 w-4 flex-shrink-0 text-clay-600" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </FadeIn>
         </div>
       </div>
     </section>

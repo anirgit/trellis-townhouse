@@ -34,11 +34,11 @@ export default function Amenities() {
     <section id="amenities" className="section-padding bg-cream-50">
       <div className="container-narrow">
         <FadeIn>
-          <span className="section-eyebrow">What&apos;s included</span>
-          <h2 className="section-title">Everything you need, included.</h2>
+          <span className="section-eyebrow">Why this home</span>
+          <h2 className="section-title">Why renters pick this townhome</h2>
           <p className="section-lead">
-            No surprise fees — utilities, internet, furnishings, and shared
-            amenities are all covered in your monthly rent.
+            Built for practical daily living: modern construction, strong
+            commuter access, useful bonus spaces, and no shared-room setup.
           </p>
         </FadeIn>
 

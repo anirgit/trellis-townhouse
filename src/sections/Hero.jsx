@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ArrowRight, MapPin, ChevronDown } from 'lucide-react'
-import { property, heroImages } from '../data/property'
+import { property, heroImages, lease } from '../data/property'
 
 export default function Hero() {
   const [activeIndex, setActiveIndex] = useState(0)
@@ -67,16 +67,25 @@ export default function Hero() {
           </div>
 
           <div className="mt-10 flex flex-wrap items-center gap-4">
-            <a href="#rooms" className="btn-primary group">
-              View Lease Details
+            <a href="#contact" className="btn-primary group">
+              Request Showing / Pre-Qualify
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
             </a>
             <a
-              href="#contact"
+              href="#rooms"
               className="inline-flex items-center justify-center gap-2 rounded-full border-2 border-cream-50/40 bg-cream-50/5 px-6 py-3 text-sm font-medium text-cream-50 backdrop-blur-sm transition-all hover:border-cream-50 hover:bg-cream-50/15"
             >
-              Schedule a Tour
+              View Lease Terms
             </a>
+          </div>
+
+          <div className="mt-8 grid grid-cols-1 gap-3 rounded-2xl border border-cream-50/20 bg-ink-900/35 p-4 backdrop-blur-sm sm:grid-cols-2 lg:grid-cols-3">
+            <Fact label="Rent" value={`$${lease.rent.toLocaleString()}/${lease.period} · ${lease.rentNote}`} />
+            <Fact label="Availability" value={lease.available} />
+            <Fact label="Lease" value={lease.leaseTerm} />
+            <Fact label="Security Deposit" value={`$${lease.securityDeposit.toLocaleString()}`} />
+            <Fact label="Move-out Cleaning Fee" value={`$${lease.moveOutCleaningFee} (non-refundable)`} />
+            <Fact label="Policies" value={`${lease.smokingPolicy} ${lease.petsPolicy}`} />
           </div>
         </motion.div>
 
@@ -106,5 +115,14 @@ export default function Hero() {
         </div>
       </div>
     </section>
+  )
+}
+
+function Fact({ label, value }) {
+  return (
+    <div className="rounded-xl border border-cream-50/15 bg-cream-50/5 p-3">
+      <p className="text-[11px] uppercase tracking-[0.16em] text-cream-100/70">{label}</p>
+      <p className="mt-1 text-sm leading-snug text-cream-50">{value}</p>
+    </div>
   )
 }

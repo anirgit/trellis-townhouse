@@ -7,9 +7,9 @@
 export const property = {
   name: 'Trellis Townhouse · Unit C6',
   tagline:
-    'Brand-new 3 bed / 4 bath townhouse for rent in Lynnwood — whole home lease, no housemates.',
+    '2025 Lynnwood townhome for rent — 3 bedrooms + bonus suite, 4 baths, near Alderwood Mall & Light Rail.',
   shortDescription:
-    'A newly built 2025 D.R. Horton townhouse in the Trellis community. Entire 3-level home rental with 3 bedrooms, 4 bathrooms, 1,965 sq ft, attached garage parking, in-unit laundry, fenced yard, and quick access to Alderwood Mall, transit, and major highways.',
+    'Modern multi-level townhome with attached garage, fenced yard, deck, smart-home access, landlord-arranged bi-weekly cleaning, and fast access to I-5/I-405, Alderwood Mall, Costco, H Mart, Trader Joe’s, Whole Foods, and Lynnwood City Center Light Rail.',
   address: {
     line1: '16723 Alderwood Mall Pkwy, Unit C6',
     city: 'Lynnwood',
@@ -34,6 +34,36 @@ export const property = {
     'Attached garage parking',
     'In-unit laundry',
     'Close to Alderwood Mall & Light Rail',
+  ],
+}
+
+// -----------------------------------------------------------------------------
+// LEASE SNAPSHOT — Shown above the fold and in lease details section.
+// -----------------------------------------------------------------------------
+export const lease = {
+  rent: 3695,
+  period: 'month',
+  rentNote: 'Includes landlord-arranged bi-weekly professional cleaning',
+  available: 'Available now (confirm exact date)',
+  leaseTerm: 'Initial 6-month fixed term preferred',
+  securityDeposit: 3695,
+  moveOutCleaningFee: 375,
+  utilitiesSummary: 'Tenant pays utilities. Owner includes landlord-arranged bi-weekly cleaning.',
+  petsPolicy: 'Pets only with prior written approval and applicable law.',
+  smokingPolicy: 'No smoking or vaping.',
+  tenantPays: [
+    'Electricity',
+    'Water',
+    'Sewer',
+    'Garbage / recycling',
+    'Internet / cable',
+    'Tenant-selected services',
+  ],
+  ownerPays: [
+    'HOA dues',
+    'Property tax',
+    'Smart-home / security subscription',
+    'Landlord-arranged bi-weekly professional cleaning',
   ],
 }
 
@@ -129,13 +159,12 @@ export const rooms = [
   {
     id: 'entire-home',
     name: 'Entire Townhome Rental',
-    price: 3595,
+    price: lease.rent,
     utilities: null,
-    utilitiesNote:
-      'Utilities & services are tenant-paid (electricity, water, sewer/garbage, internet, and bi-weekly cleaning).',
-    period: 'month',
+    utilitiesNote: lease.utilitiesSummary,
+    period: lease.period,
     floor: '3 levels',
-    available: 'Available Sep 19, 2026',
+    available: lease.available,
     status: 'available',
     image: '/photos/exterior.jpg',
     description:
@@ -158,16 +187,16 @@ export const rooms = [
 // Icon names must match keys in Amenities.jsx ICON_MAP.
 // -----------------------------------------------------------------------------
 export const amenities = [
-  { icon: 'Wifi', label: 'High-Speed Internet Ready', detail: 'Ziply Fiber available' },
-  { icon: 'Sofa', label: 'Spacious Living Area', detail: 'High ceilings, large windows, sofa included' },
-  { icon: 'ChefHat', label: 'Chef’s Kitchen', detail: 'Quartz counters, stainless appliances' },
-  { icon: 'WashingMachine', label: 'In-Unit Laundry', detail: 'Washer & dryer included' },
-  { icon: 'Thermometer', label: 'Additional Refrigerator', detail: 'Extra refrigerator included in living area' },
-  { icon: 'Car', label: 'Attached Garage Parking', detail: 'Garage + off-street parking' },
-  { icon: 'Trees', label: 'Private Fenced Backyard', detail: 'Plus upper-level deck' },
-  { icon: 'ShieldCheck', label: 'Smart Home + Security', detail: 'Landlord-managed systems' },
-  { icon: 'Sparkles', label: 'Professional Cleaning Option', detail: 'Can be bundled in utilities/services fee' },
-  { icon: 'Zap', label: 'Modern Systems', detail: 'Heat pump + wall unit A/C' },
+  { icon: 'Zap', label: '2025 Construction', detail: 'Brand-new D.R. Horton build' },
+  { icon: 'Car', label: 'Attached Garage + Parking', detail: 'Garage and driveway/off-street options' },
+  { icon: 'ShieldCheck', label: 'Bonus Suite / Office', detail: 'Garage-level flex room with attached bath' },
+  { icon: 'Trees', label: 'Fenced Yard + Deck', detail: 'Great indoor-outdoor flow' },
+  { icon: 'WashingMachine', label: 'In-Unit Washer/Dryer', detail: 'Laundry included' },
+  { icon: 'ChefHat', label: 'Chef Kitchen', detail: 'Peninsula seating, stainless appliances' },
+  { icon: 'Sofa', label: 'Living Room Extras', detail: 'Sofa + additional refrigerator included' },
+  { icon: 'Wifi', label: 'Smart-Home Access', detail: 'Smart lock and garage app access' },
+  { icon: 'Sparkles', label: 'Bi-Weekly Cleaning', detail: 'Landlord-arranged professional service included' },
+  { icon: 'Thermometer', label: 'No Shared-Room Setup', detail: 'Entire-home lease, not a room-by-room rental' },
 ]
 
 // -----------------------------------------------------------------------------
@@ -207,7 +236,7 @@ export const faqs = [
   },
   {
     q: 'Are pets allowed?',
-    a: 'No. Pets are not allowed.',
+    a: 'Pets are only allowed with prior written approval and in compliance with applicable law.',
   },
   {
     q: 'What are the house rules?',

@@ -8,26 +8,33 @@ import FadeIn from '../components/FadeIn'
 // server-side (a 2000 char message cap) to mitigate abuse.
 const MAX_NAME = 80
 const MAX_EMAIL = 120
+const MAX_PHONE = 25
 const MAX_MESSAGE = 2000
 
-function validate({ name, email, message }) {
+function validate({ name, email, phone, reason }) {
   const errors = {}
   const trimmedName = name.trim()
   const trimmedEmail = email.trim()
-  const trimmedMessage = message.trim()
+  const trimmedPhone = phone.trim()
+  const trimmedReason = reason.trim()
 
   if (!trimmedName) errors.name = 'Please enter your name.'
   else if (trimmedName.length > MAX_NAME) errors.name = `Max ${MAX_NAME} characters.`
 
   // Conservative RFC-ish email pattern, anchored.
   const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-  if (!trimmedEmail) errors.email = 'Please enter your email.'
-  else if (trimmedEmail.length > MAX_EMAIL) errors.email = `Max ${MAX_EMAIL} characters.`
-  else if (!emailRe.test(trimmedEmail)) errors.email = 'That doesn’t look like a valid email.'
+  if (!trimmedEmail && !trimmedPhone) {
+    errors.email = 'Please provide email or phone.'
+    errors.phone = 'Please provide phone or email.'
+  } else {
+    if (trimmedEmail && trimmedEmail.length > MAX_EMAIL) errors.email = `Max ${MAX_EMAIL} characters.`
+    else if (trimmedEmail && !emailRe.test(trimmedEmail)) errors.email = 'That doesn’t look like a valid email.'
+    if (trimmedPhone && trimmedPhone.length > MAX_PHONE) errors.phone = `Max ${MAX_PHONE} characters.`
+  }
 
-  if (!trimmedMessage) errors.message = 'Please write a short message.'
-  else if (trimmedMessage.length < 10) errors.message = 'Tell me a bit more (10+ characters).'
-  else if (trimmedMessage.length > MAX_MESSAGE) errors.message = `Max ${MAX_MESSAGE} characters.`
+  if (!trimmedReason) errors.reason = 'Please share your reason for moving.'
+  else if (trimmedReason.length < 10) errors.reason = 'Tell me a bit more (10+ characters).'
+  else if (trimmedReason.length > MAX_MESSAGE) errors.reason = `Max ${MAX_MESSAGE} characters.`
 
   return errors
 }
@@ -36,9 +43,17 @@ export default function Contact() {
   const [form, setForm] = useState({
     name: '',
     email: '',
+    phone: '',
     leaseTerm: '',
     moveIn: '',
-    message: '',
+    occupants: '',
+    incomeRange: '',
+    creditRange: '',
+    pets: '',
+    smoking: '',
+    reason: '',
+    showingTime: '',
+    notes: '',
     // Honeypot field — bots fill it, humans don't see it.
     website: '',
   })
@@ -72,14 +87,37 @@ export default function Contact() {
           body: JSON.stringify({
             name: form.name.trim(),
             email: form.email.trim(),
+            phone: form.phone.trim() || 'Not provided',
             leaseTerm: form.leaseTerm || 'Flexible',
             moveIn: form.moveIn || 'Flexible',
-            message: form.message.trim(),
+            occupants: form.occupants || 'Not provided',
+            incomeRange: form.incomeRange || 'Not provided',
+            creditRange: form.creditRange || 'Not provided',
+            pets: form.pets || 'Not provided',
+            smoking: form.smoking || 'Not provided',
+            reasonForMoving: form.reason.trim(),
+            preferredShowingTime: form.showingTime || 'Not provided',
+            additionalNotes: form.notes.trim() || 'None',
           }),
         })
         if (!res.ok) throw new Error(`Form submission failed: ${res.status}`)
         setStatus('success')
-        setForm({ name: '', email: '', leaseTerm: '', moveIn: '', message: '', website: '' })
+        setForm({
+          name: '',
+          email: '',
+          phone: '',
+          leaseTerm: '',
+          moveIn: '',
+          occupants: '',
+          incomeRange: '',
+          creditRange: '',
+          pets: '',
+          smoking: '',
+          reason: '',
+          showingTime: '',
+          notes: '',
+          website: '',
+        })
       } catch {
         setStatus('error')
       }
@@ -89,11 +127,22 @@ export default function Contact() {
     const subject = encodeURIComponent(`Rental Inquiry — ${form.name}`)
     const bodyLines = [
       `Name: ${form.name}`,
-      `Email: ${form.email}`,
+      `Email: ${form.email || 'Not provided'}`,
+      `Phone: ${form.phone || 'Not provided'}`,
       `Preferred lease term: ${form.leaseTerm || 'Flexible'}`,
       `Move-in: ${form.moveIn || 'Flexible'}`,
+      `Occupants: ${form.occupants || 'Not provided'}`,
+      `Monthly household income range: ${form.incomeRange || 'Not provided'}`,
+      `Credit score range: ${form.creditRange || 'Not provided'}`,
+      `Any pets?: ${form.pets || 'Not provided'}`,
+      `Any smoking/vaping?: ${form.smoking || 'Not provided'}`,
+      `Preferred showing time: ${form.showingTime || 'Not provided'}`,
       '',
-      form.message,
+      `Reason for moving:`,
+      form.reason,
+      '',
+      `Additional notes:`,
+      form.notes || 'None',
     ]
     const body = encodeURIComponent(bodyLines.join('\n'))
     window.location.href = `mailto:${contact.email}?subject=${subject}&body=${body}`
@@ -109,11 +158,11 @@ export default function Contact() {
               Let’s connect
             </span>
             <h2 className="mt-3 font-serif text-4xl font-medium leading-tight sm:text-5xl">
-              Interested? Send a message.
+              Request Showing / Pre-Qualify
             </h2>
             <p className="mt-4 max-w-md text-lg leading-relaxed text-cream-100/85">
-              Tell me a bit about your household, ideal move-in date, and lease
-              timeline, and I&apos;ll get back to schedule a tour.
+              Share quick screening basics and preferred showing windows. No SSN
+              or sensitive personal data is collected here.
             </p>
 
             <div className="mt-8 space-y-3">
@@ -168,68 +217,172 @@ export default function Contact() {
                   error={errors.email}
                   autoComplete="email"
                   maxLength={MAX_EMAIL}
-                  required
+                />
+                <Field
+                  label="Phone"
+                  id="phone"
+                  type="tel"
+                  value={form.phone}
+                  onChange={update('phone')}
+                  error={errors.phone}
+                  autoComplete="tel"
+                  maxLength={MAX_PHONE}
                 />
 
-                <div className="flex flex-col gap-1.5">
-                  <label htmlFor="leaseTerm" className="text-xs font-medium uppercase tracking-wider text-ink-700">
-                    Preferred lease term
-                  </label>
-                  <select
-                    id="leaseTerm"
-                    value={form.leaseTerm}
-                    onChange={update('leaseTerm')}
-                    className="rounded-xl border border-clay-200 bg-cream-50 px-4 py-3 text-sm text-ink-900 transition-colors focus:border-clay-500 focus:outline-none focus:ring-2 focus:ring-clay-300/40"
-                  >
-                    <option value="">Flexible / not sure yet</option>
-                    <option value="6 months">6 months</option>
-                    <option value="12 months">12 months</option>
-                    <option value="12+ months">12+ months</option>
-                  </select>
-                </div>
-
                 <Field
-                  label="Ideal move-in"
+                  label="Desired move-in date"
                   id="moveIn"
                   type="text"
-                  placeholder="e.g. Aug 1"
+                  placeholder="e.g. Sep 19, 2026"
                   value={form.moveIn}
                   onChange={update('moveIn')}
                   autoComplete="off"
                   maxLength={40}
                 />
+
+                <SelectField
+                  label="Number of occupants"
+                  id="occupants"
+                  value={form.occupants}
+                  onChange={update('occupants')}
+                  options={[
+                    { value: '', label: 'Select' },
+                    { value: '1', label: '1' },
+                    { value: '2', label: '2' },
+                    { value: '3', label: '3' },
+                    { value: '4+', label: '4+' },
+                  ]}
+                />
+                <SelectField
+                  label="Monthly household income range"
+                  id="incomeRange"
+                  value={form.incomeRange}
+                  onChange={update('incomeRange')}
+                  options={[
+                    { value: '', label: 'Select' },
+                    { value: '<$6k', label: 'Under $6,000' },
+                    { value: '$6k-$9k', label: '$6,000 - $9,000' },
+                    { value: '$9k-$12k', label: '$9,000 - $12,000' },
+                    { value: '$12k+', label: '$12,000+' },
+                  ]}
+                />
+                <SelectField
+                  label="Credit score range"
+                  id="creditRange"
+                  value={form.creditRange}
+                  onChange={update('creditRange')}
+                  options={[
+                    { value: '', label: 'Select' },
+                    { value: '700+', label: '700+' },
+                    { value: '650-699', label: '650 - 699' },
+                    { value: '600-649', label: '600 - 649' },
+                    { value: '<600', label: 'Below 600' },
+                  ]}
+                />
+                <SelectField
+                  label="Any pets?"
+                  id="pets"
+                  value={form.pets}
+                  onChange={update('pets')}
+                  options={[
+                    { value: '', label: 'Select' },
+                    { value: 'No', label: 'No' },
+                    { value: 'Yes', label: 'Yes' },
+                  ]}
+                />
+                <SelectField
+                  label="Any smoking/vaping?"
+                  id="smoking"
+                  value={form.smoking}
+                  onChange={update('smoking')}
+                  options={[
+                    { value: '', label: 'Select' },
+                    { value: 'No', label: 'No' },
+                    { value: 'Yes', label: 'Yes' },
+                  ]}
+                />
+                <SelectField
+                  label="Preferred showing time"
+                  id="showingTime"
+                  value={form.showingTime}
+                  onChange={update('showingTime')}
+                  options={[
+                    { value: '', label: 'Select' },
+                    { value: 'Weekday evenings', label: 'Weekday evenings' },
+                    { value: 'Weekday daytime', label: 'Weekday daytime' },
+                    { value: 'Weekend mornings', label: 'Weekend mornings' },
+                    { value: 'Weekend afternoons', label: 'Weekend afternoons' },
+                    { value: 'Flexible', label: 'Flexible' },
+                  ]}
+                />
               </div>
 
               <div className="mt-5 flex flex-col gap-1.5">
-                <label htmlFor="message" className="text-xs font-medium uppercase tracking-wider text-ink-700">
-                  Message <span className="text-clay-600">*</span>
+                <label htmlFor="reason" className="text-xs font-medium uppercase tracking-wider text-ink-700">
+                  Reason for moving <span className="text-clay-600">*</span>
                 </label>
                 <textarea
-                  id="message"
-                  rows={5}
-                  value={form.message}
-                  onChange={update('message')}
+                  id="reason"
+                  rows={4}
+                  value={form.reason}
+                  onChange={update('reason')}
                   maxLength={MAX_MESSAGE}
                   required
                   className={`resize-none rounded-xl border bg-cream-50 px-4 py-3 text-sm text-ink-900 transition-colors focus:outline-none focus:ring-2 focus:ring-clay-300/40 ${
-                    errors.message
+                    errors.reason
                       ? 'border-red-400 focus:border-red-500'
                       : 'border-clay-200 focus:border-clay-500'
                   }`}
-                  placeholder="Hi! I'm interested in a room. A bit about me…"
+                  placeholder="Tell us briefly why you're moving and what you're looking for."
                 />
                 <div className="flex items-center justify-between">
-                  {errors.message ? (
-                    <span className="text-xs text-red-600">{errors.message}</span>
+                  {errors.reason ? (
+                    <span className="text-xs text-red-600">{errors.reason}</span>
                   ) : (
-                    <span className="text-xs text-ink-700/60">
-                      Min 10 characters.
-                    </span>
+                    <span className="text-xs text-ink-700/60">Min 10 characters.</span>
                   )}
                   <span className="text-xs text-ink-700/60">
-                    {form.message.length}/{MAX_MESSAGE}
+                    {form.reason.length}/{MAX_MESSAGE}
                   </span>
                 </div>
+              </div>
+
+              <div className="mt-5 flex flex-col gap-1.5">
+                <label htmlFor="notes" className="text-xs font-medium uppercase tracking-wider text-ink-700">
+                  Additional notes (optional)
+                </label>
+                <textarea
+                  id="notes"
+                  rows={3}
+                  value={form.notes}
+                  onChange={update('notes')}
+                  maxLength={600}
+                  className="resize-none rounded-xl border border-clay-200 bg-cream-50 px-4 py-3 text-sm text-ink-900 transition-colors focus:border-clay-500 focus:outline-none focus:ring-2 focus:ring-clay-300/40"
+                  placeholder="Anything else you'd like to share?"
+                />
+              </div>
+
+              <div className="mt-5 rounded-xl border border-clay-200 bg-clay-50/50 p-3 text-xs text-ink-700">
+                We do not collect SSN or sensitive personal data on this website.
+                Formal screening is handled through trusted third-party platforms
+                (e.g., Zillow, Avail, TurboTenant, SmartMove).
+              </div>
+
+              <div className="mt-5 flex flex-col gap-1.5">
+                <label htmlFor="leaseTerm" className="text-xs font-medium uppercase tracking-wider text-ink-700">
+                  Preferred lease term
+                </label>
+                <select
+                  id="leaseTerm"
+                  value={form.leaseTerm}
+                  onChange={update('leaseTerm')}
+                  className="rounded-xl border border-clay-200 bg-cream-50 px-4 py-3 text-sm text-ink-900 transition-colors focus:border-clay-500 focus:outline-none focus:ring-2 focus:ring-clay-300/40"
+                >
+                  <option value="">Flexible / not sure yet</option>
+                  <option value="6 months">6 months</option>
+                  <option value="12 months">12 months</option>
+                  <option value="12+ months">12+ months</option>
+                </select>
               </div>
 
               <button
@@ -245,7 +398,7 @@ export default function Contact() {
                 ) : (
                   <>
                     <Send className="h-4 w-4" />
-                    Send Inquiry
+                    Request Showing / Pre-Qualify
                   </>
                 )}
               </button>
@@ -260,8 +413,8 @@ export default function Contact() {
                   >
                     <CheckCircle2 className="mt-0.5 h-5 w-5 flex-shrink-0" />
                     <span>
-                      Thanks — your message is on its way. I&apos;ll get back to
-                      you soon.
+                      Thanks — your request is on its way. I&apos;ll follow up to
+                      schedule a showing.
                     </span>
                   </motion.div>
                 )}
@@ -288,6 +441,28 @@ export default function Contact() {
         </div>
       </div>
     </section>
+  )
+}
+
+function SelectField({ label, id, value, onChange, options }) {
+  return (
+    <div className="flex flex-col gap-1.5">
+      <label htmlFor={id} className="text-xs font-medium uppercase tracking-wider text-ink-700">
+        {label}
+      </label>
+      <select
+        id={id}
+        value={value}
+        onChange={onChange}
+        className="rounded-xl border border-clay-200 bg-cream-50 px-4 py-3 text-sm text-ink-900 transition-colors focus:border-clay-500 focus:outline-none focus:ring-2 focus:ring-clay-300/40"
+      >
+        {options.map((option) => (
+          <option key={option.value} value={option.value}>
+            {option.label}
+          </option>
+        ))}
+      </select>
+    </div>
   )
 }
 

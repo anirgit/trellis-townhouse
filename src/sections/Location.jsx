@@ -1,4 +1,4 @@
-import { MapPin, Train, ShoppingBag, Plane, Building2 } from 'lucide-react'
+import { MapPin, Train, ShoppingBag, Plane, Building2, Route } from 'lucide-react'
 import { property } from '../data/property'
 import FadeIn from '../components/FadeIn'
 
@@ -9,14 +9,29 @@ const NEARBY = [
     detail: '0.5 mi — shopping, dining & entertainment next door',
   },
   {
-    icon: Train,
-    label: 'Lynnwood City Center Link',
-    detail: '~2 mi — light rail to downtown Seattle in 28 min',
+    icon: ShoppingBag,
+    label: 'Costco',
+    detail: '~4 min drive',
+  },
+  {
+    icon: ShoppingBag,
+    label: 'H Mart + Trader Joe’s + Whole Foods + Target',
+    detail: 'Minutes away for everyday essentials',
   },
   {
     icon: Building2,
     label: 'Downtown Seattle',
     detail: '~16 mi south via I-5 (or one-seat ride on Link)',
+  },
+  {
+    icon: Train,
+    label: 'Lynnwood City Center Link Light Rail',
+    detail: '~2 mi — direct ride toward downtown Seattle',
+  },
+  {
+    icon: Route,
+    label: 'I-5 / I-405 Access',
+    detail: 'Fast regional commute connections',
   },
   {
     icon: Plane,
