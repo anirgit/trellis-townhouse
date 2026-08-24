@@ -49,7 +49,7 @@ export const lease = {
   securityDeposit: 3695,
   moveOutCleaningFee: 375,
   utilitiesSummary: 'Tenant pays utilities. Owner includes landlord-arranged bi-weekly cleaning.',
-  petsPolicy: 'Pets only with prior written approval and applicable law.',
+  petsPolicy: 'No pets allowed.',
   smokingPolicy: 'No smoking or vaping.',
   tenantPays: [
     'Electricity',
@@ -236,7 +236,7 @@ export const faqs = [
   },
   {
     q: 'Are pets allowed?',
-    a: 'Pets are only allowed with prior written approval and in compliance with applicable law.',
+    a: 'No. Pets are not allowed.',
   },
   {
     q: 'What are the house rules?',
