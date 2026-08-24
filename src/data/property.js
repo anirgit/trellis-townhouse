@@ -9,7 +9,7 @@ export const property = {
   tagline:
     '2025 Lynnwood townhome for rent — 3 bedrooms + bonus suite, 4 baths, near Alderwood Mall & Light Rail.',
   shortDescription:
-    'Modern multi-level townhome with attached garage, fenced yard, deck, smart-home access, landlord-arranged bi-weekly cleaning, and fast access to I-5/I-405, Alderwood Mall, Costco, H Mart, Trader Joe’s, Whole Foods, and Lynnwood City Center Light Rail.',
+    'Modern multi-level townhome with attached garage, fenced yard, deck, smart-home access, tenant-paid bi-weekly professional cleaning option, and fast access to I-5/I-405, Alderwood Mall, Costco, H Mart, Trader Joe’s, Whole Foods, and Lynnwood City Center Light Rail.',
   address: {
     line1: '16723 Alderwood Mall Pkwy, Unit C6',
     city: 'Lynnwood',
@@ -43,12 +43,12 @@ export const property = {
 export const lease = {
   rent: 3595,
   period: 'month',
-  rentNote: 'Includes landlord-arranged bi-weekly professional cleaning',
+  rentNote: 'Tenant pays utilities + bi-weekly professional cleaning',
   available: 'Available from Sep 19th',
   leaseTerm: 'Lease terms are flexible from 6 to 12 months',
   securityDeposit: 3595,
   moveOutCleaningFee: 375,
-  utilitiesSummary: 'Tenant pays utilities. Owner includes landlord-arranged bi-weekly cleaning.',
+  utilitiesSummary: 'Tenant pays utilities and bi-weekly professional cleaning.',
   petsPolicy: 'No pets allowed.',
   smokingPolicy: 'No smoking or vaping.',
   tenantPays: [
@@ -57,13 +57,13 @@ export const lease = {
     'Sewer',
     'Garbage / recycling',
     'Internet / cable',
+    'Bi-weekly professional cleaning',
     'Tenant-selected services',
   ],
   ownerPays: [
     'HOA dues',
     'Property tax',
     'Smart-home / security subscription',
-    'Landlord-arranged bi-weekly professional cleaning',
   ],
 }
 
@@ -195,7 +195,7 @@ export const amenities = [
   { icon: 'ChefHat', label: 'Chef Kitchen', detail: 'Peninsula seating, stainless appliances' },
   { icon: 'Sofa', label: 'Living Room Extras', detail: 'Sofa + additional refrigerator included' },
   { icon: 'Wifi', label: 'Smart-Home Access', detail: 'Smart lock and garage app access' },
-  { icon: 'Sparkles', label: 'Bi-Weekly Cleaning', detail: 'Landlord-arranged professional service included' },
+  { icon: 'Sparkles', label: 'Bi-Weekly Cleaning', detail: 'Tenant-paid professional service' },
   { icon: 'Thermometer', label: 'No Shared-Room Setup', detail: 'Entire-home lease, not a room-by-room rental' },
 ]
 
@@ -228,7 +228,7 @@ export const faqs = [
   },
   {
     q: 'Are utilities included in rent?',
-    a: 'Utilities/services are tenant-paid. This typically includes electricity, water, sewer/garbage, internet, and optional recurring cleaning services.',
+    a: 'Utilities/services are tenant-paid. This includes electricity, water, sewer/garbage, internet, and bi-weekly professional cleaning.',
   },
   {
     q: 'Is this a room share or entire home lease?',
