@@ -41,12 +41,12 @@ export const property = {
 // LEASE SNAPSHOT — Shown above the fold and in lease details section.
 // -----------------------------------------------------------------------------
 export const lease = {
-  rent: 3595,
+  rent: 3545,
   period: 'month',
   rentNote: 'Tenant pays utilities + bi-weekly professional cleaning',
   available: 'Available from Sep 19th',
   leaseTerm: 'Lease terms are flexible from 6 to 12 months',
-  securityDeposit: 3595,
+  securityDeposit: 3545,
   moveOutCleaningFee: 375,
   utilitiesSummary: 'Tenant pays utilities and bi-weekly professional cleaning.',
   petsPolicy: 'No pets allowed.',
