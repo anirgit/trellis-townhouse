@@ -39,3 +39,6 @@ Thumbs.db
 
 # Vercel
 .vercel
+
+# Private local analysis (contains compensation data)
+compensation-review.html
