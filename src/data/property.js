@@ -9,7 +9,7 @@ export const property = {
   tagline:
     '2025 Lynnwood townhome for rent — 3 bedrooms + bonus suite, 4 baths, near Alderwood Mall & Light Rail.',
   shortDescription:
-    'Modern multi-level townhome with attached garage, fenced yard, deck, smart-home access, tenant-paid bi-weekly professional cleaning option, and fast access to I-5/I-405, Alderwood Mall, Costco, H Mart, Trader Joe’s, Whole Foods, and Lynnwood City Center Light Rail.',
+    'Modern multi-level townhome with attached garage, fenced yard, deck, smart-home access and fast access to I-5/I-405, Alderwood Mall, Costco, H Mart, Trader Joe’s, Whole Foods, and Lynnwood City Center Light Rail.',
   address: {
     line1: '16723 Alderwood Mall Pkwy, Unit C6',
     city: 'Lynnwood',
@@ -43,8 +43,8 @@ export const property = {
 export const lease = {
   rent: 3350,
   period: 'month',
-  rentNote: 'Tenant pays utilities + bi-weekly professional cleaning',
-  available: 'Available from Sep 19th',
+  rentNote: 'Tenant pays utilities',
+  available: 'Available now',
   leaseTerm: 'Lease terms are flexible from 6 to 12 months',
   securityDeposit: 3350,
   moveOutCleaningFee: 375,
@@ -194,7 +194,6 @@ export const amenities = [
   { icon: 'ChefHat', label: 'Chef Kitchen', detail: 'Peninsula seating, stainless appliances' },
   { icon: 'Sofa', label: 'Living Room Extras', detail: 'Sofa + additional refrigerator included' },
   { icon: 'Wifi', label: 'Smart-Home Access', detail: 'Smart lock and garage app access' },
-  { icon: 'Sparkles', label: 'Bi-Weekly Cleaning', detail: 'Tenant-paid professional service' },
   { icon: 'Thermometer', label: 'No Shared-Room Setup', detail: 'Entire-home lease, not a room-by-room rental' },
 ]
 
@@ -227,7 +226,7 @@ export const faqs = [
   },
   {
     q: 'Are utilities included in rent?',
-    a: 'Utilities/services are tenant-paid. This includes electricity, water, sewer/garbage, internet, and bi-weekly professional cleaning.',
+    a: 'Utilities/services are tenant-paid. This includes electricity, water, sewer/garbage, internet.',
   },
   {
     q: 'Is this a room share or entire home lease?',
